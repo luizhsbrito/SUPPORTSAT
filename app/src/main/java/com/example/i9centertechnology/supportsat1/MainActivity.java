@@ -1,8 +1,11 @@
 package com.example.i9centertechnology.supportsat1;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -34,8 +37,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void OnClickDiscar(View v) {
+        Uri uri = Uri.parse("tel:" + 987512110);
+        Intent i = new Intent(Intent.ACTION_CALL, uri);
+        if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)) {
+            return;
+        }
+        startActivity(i);
 
-
-
+    }
 
 }
